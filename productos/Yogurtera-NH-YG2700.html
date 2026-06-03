@@ -360,18 +360,17 @@
                     </div>
                     
                     
-                    
                         <div class="slider-dots">
                             
-                                <button class="slider-dot active" onclick="scrollToSlide('0')"></button>
+                                <button class="slider-dot active" data-index="0"></button>
                             
-                                <button class="slider-dot " onclick="scrollToSlide('1')"></button>
+                                <button class="slider-dot " data-index="1"></button>
                             
-                                <button class="slider-dot " onclick="scrollToSlide('2')"></button>
+                                <button class="slider-dot " data-index="2"></button>
                             
-                                <button class="slider-dot " onclick="scrollToSlide('3')"></button>
+                                <button class="slider-dot " data-index="3"></button>
                             
-                                <button class="slider-dot " onclick="scrollToSlide('4')"></button>
+                                <button class="slider-dot " data-index="4"></button>
                             
                         </div>
                     
@@ -412,18 +411,20 @@ Disfrutá de yogures frescos todos los días para toda la familia. 💖
 </a>
 
 
-
 <script>
     const track = document.getElementById('sliderTrack');
     const dots = document.querySelectorAll('.slider-dot');
 
-    function scrollToSlide(index) {
-        const width = track.clientWidth;
-        track.scrollTo({
-            left: width * index,
-            behavior: 'smooth'
+    dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+            const index = parseInt(e.target.getAttribute('data-index'));
+            const width = track.clientWidth;
+            track.scrollTo({
+                left: width * index,
+                behavior: 'smooth'
+            });
         });
-    }
+    });
 
     track.addEventListener('scroll', () => {
         const width = track.clientWidth;
