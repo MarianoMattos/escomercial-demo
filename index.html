@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos | ESCOMERCIAL</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sitio-header {
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            border-bottom: 1px solid #f1f5f9;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            z-index: 1000;
+            padding: 12px 12px;
+        }
+
+        /* Cambiado a flex con centrado perfecto */
+        .header-contenedor {
+            width: 100%; 
+            max-width: 100%; 
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Ahora contiene todos los elementos alineados horizontalmente */
+        .brand-link {
+            display: inline-flex;
+            align-items: center;
+            gap: clamp(6px, 1.5vw, 10px);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+            min-width: 0;
+        }
+
+        .brand-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Icono SVG elástico */
+        .logo-svg {
+            width: clamp(32px, 6.5vw, 52px);
+            height: clamp(32px, 6.5vw, 52px);
+            color: #e11d48; 
+            flex-shrink: 0;
+        }
+
+        /* Estilos elásticos del Texto de la Marca */
+        .brand-texto {
+            font-size: clamp(14px, 3.2vw, 24px);
+            font-weight: 800;
+            letter-spacing: 0.03em; 
+            text-transform: uppercase; 
+            line-height: 1;
+            color: #1B5F9B; 
+            white-space: nowrap;
+        }
+
+        /* Modificado el padding para balancear el centro respecto a la línea divisoria */
+        .slogan-group {
+            padding-left: clamp(8px, 2vw, 10px);
+            min-width: 0;
+            margin-left: clamp(2px, 0.5vw, 4px);
+        }
+
+        /* Estilos elásticos de los Slogans */
+        .slogan-texto {
+            font-size: clamp(8px, 1.8vw, 12px);
+            font-weight: 600;
+            color: #64748b;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            height: clamp(12px, 2.5vw, 16px);
+            white-space: nowrap;
+        }
+
+        .contenido-principal {
+            flex: 1;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Base (mobile / no PC): 2 columnas centradas */
+        .header-contenedor {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        }
+        
+        .brand-link{
+            justify-self: self-end;
+            margin-right: 14px;
+        }
+
+        .slogan-group{
+            justify-self: self-start;
+            margin-left: 14px;
+        }
+
+        /* Modo PC */
+        @media (min-width: 1024px) {
+        .header-contenedor {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* Permite posicionar hijos internos en la grilla */
+
+        /* Logo + texto en columna 2 */
+        .brand-link{
+            grid-column: 2;
+        }
+        
+        .brand-link > .logo-svg,
+        .brand-link > div {
+            justify-self: center;
+        }
+
+        /* Slogan en columna 3 */
+        .slogan-group {
+            grid-column: 3;
+        }
+        }
+    </style>
+    
+    
+    
+</head>
+<body>
+
+    <header class="sitio-header">
+        <div class="header-contenedor">
+            
+            <a href="/" class="brand-link">
+                <svg class="logo-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397 334" preserveAspectRatio="xMidYMid meet">
+                    <path d="M0,0 L397,0 L397,334 L0,334 Z " fill="#F8FAFB" transform="translate(0,0)"/>
+                    <path d="M0,0 L4,1 L18,9 L28,16 L33,18 L44,25 L51,30 L56,32 L57,23 L60,23 L63,26 L63,28 L67,30 L75,38 L82,47 L82,48 L46,48 L40,43 L33,39 L25,35 L21,31 L11,26 L5,21 L-1,20 L-8,24 L-18,30 L-26,35 L-37,41 L-44,46 L-52,49 L-60,54 L-62,54 L-63,57 L-70,61 L-77,66 L-86,79 L-91,90 L-129,90 L-126,98 L-123,107 L-119,122 L-118,127 L25,127 L25,110 L29,111 L40,119 L55,129 L66,137 L76,144 L76,146 L67,151 L56,159 L45,166 L34,174 L26,177 L25,162 L-142,161 L-146,152 L-148,144 L-152,130 L-154,125 L-158,111 L-161,104 L-166,85 L-169,77 L-169,66 L-165,60 L-162,57 L-156,55 L-93,54 L-76,45 L-72,42 L-69,42 L-69,11 L-48,11 L-48,28 L-32,19 L-24,15 L-16,9 L-11,7 L-2,1 Z " fill="#0657A0" transform="translate(174,31)"/>
+                    <path d="M0,0 L43,0 L49,3 L49,5 L51,5 L54,12 L54,22 L50,29 L45,33 L42,34 L6,35 L-3,38 L-8,43 L-12,49 L-27,98 L-37,131 L-55,189 L-61,201 L-71,212 L-81,218 L-94,222 L-268,222 L-267,219 L-246,205 L-230,195 L-218,187 L-98,186 L-92,183 L-85,175 L-71,130 L-57,84 L-48,55 L-40,31 L-33,20 L-29,15 L-27,15 L-27,13 L-17,6 L-5,1 Z " fill="#97CA25" transform="translate(337,50)"/>
+                    <path d="M0,0 L147,0 L143,16 L140,25 L138,32 L137,35 L8,36 L1,39 L-2,43 L-8,61 L-48,61 L-46,46 L-42,35 L-40,35 L-37,26 L-30,16 L-18,7 L-10,3 Z " fill="#0858A0" transform="translate(136,86)"/>
+                    <path d="M0,0 L11,0 L15,1 L15,7 L12,10 L9,13 L5,15 L-32,17 L-41,22 L-46,27 L-49,32 L-64,81 L-74,114 L-92,172 L-98,184 L-108,195 L-118,201 L-131,205 L-305,205 L-304,202 L-284,189 L-277,186 L-277,188 L-247,188 L-134,187 L-124,184 L-116,178 L-114,178 L-113,174 L-107,164 L-106,158 L-104,158 L-103,152 L-97,132 L-88,103 L-83,87 L-81,82 L-79,74 L-73,57 L-71,49 L-67,37 L-62,22 L-58,14 L-52,9 L-50,9 L-50,7 L-35,1 Z " fill="#84BA1E" transform="translate(374,67)"/>
+                    <path d="M0,0 L5,2 L11,6 L11,8 L2,13 L-9,21 L-20,28 L-31,36 L-39,39 L-40,24 L-207,23 L-211,14 L-212,3 L-211,6 L-13,6 L-2,7 L0,5 L2,4 L0,3 Z M3,5 L3,7 L7,6 Z " fill="#054787" transform="translate(239,169)"/>
+                    <path d="M0,0 L4,1 L18,9 L28,16 L33,18 L44,25 L51,30 L56,32 L57,23 L60,23 L63,26 L63,28 L67,30 L75,38 L82,47 L82,48 L46,48 L40,43 L33,39 L25,35 L21,31 L11,26 L5,21 L-1,20 L-8,24 L-18,30 L-26,35 L-37,41 L-44,46 L-52,49 L-60,54 L-67,57 L-72,56 L-82,55 L-87,54 L-90,54 L-86,50 L-76,45 L-72,42 L-69,42 L-69,11 L-48,11 L-48,28 L-32,19 L-24,15 L-16,9 L-11,7 L-2,1 Z M-91,55 Z " fill="#0B4B89" transform="translate(174,31)"/>
+                    <path d="M0,0 L1,0 L0,8 L-2,17 L-4,21 L-133,22 L-140,25 L-143,29 L-149,47 L-186,47 L-186,46 L-170,45 L-165,29 L-158,17 L-151,9 L-142,5 L-138,4 L-8,3 L-1,1 Z " fill="#094A89" transform="translate(277,100)"/>
+                    <path d="M0,0 L41,0 L39,12 L33,32 L32,35 L18,44 L7,52 L-4,59 L-16,67 L-18,67 L-17,59 L-15,52 L-6,22 L-4,16 Z " fill="#09579E" transform="translate(70,203)"/>
+                    <path d="M0,0 Z M-1,1 L-1,4 L-8,14 L-13,25 L-51,25 L-48,33 L-45,42 L-41,57 L-40,62 L58,62 L58,64 L-41,64 L-42,63 L-56,62 L-58,59 L-62,45 L-67,29 L-70,22 L-73,10 L-70,7 L-19,7 L-8,5 L-8,7 L-4,6 L-2,2 Z M-12,7 Z " fill="#0D4C8A" transform="translate(96,96)"/>
+                    <path d="M0,0 L7,0 L13,2 L13,4 L17,5 L22,13 L22,25 L18,32 L13,36 L8,38 L-2,38 L-8,35 L-13,30 L-16,22 L-15,12 L-9,4 L-4,1 Z " fill="#92C426" transform="translate(103,284)"/>
+                    <path d="M0,0 L7,0 L16,4 L20,9 L22,13 L23,20 L21,29 L14,36 L9,38 L-1,38 L-9,34 L-13,29 L-15,23 L-15,16 L-12,8 L-5,2 Z " fill="#91C426" transform="translate(212,284)"/>
+                    <path d="M0,0 L37,0 L45,4 L49,9 L51,14 L51,21 L48,30 L43,35 L38,37 L28,38 L0,39 L-10,42 L-6,38 L1,36 L37,35 L44,31 L48,24 L48,14 L46,7 L44,7 L44,5 L38,3 L-5,3 L-18,7 L-28,13 L-32,15 L-32,17 L-34,17 L-36,21 L-43,31 L-49,47 L-59,80 L-77,138 L-89,177 L-96,185 L-100,188 L-103,189 L-223,190 L-240,201 L-251,208 L-261,215 L-263,214 L-259,210 L-256,210 L-255,207 L-246,202 L-231,192 L-226,189 L-224,188 L-106,187 L-99,184 L-94,180 L-91,175 L-77,129 L-71,110 L-67,97 L-62,81 L-50,42 L-48,36 L-42,24 L-33,14 L-26,8 L-13,2 Z M-12,42 L-10,42 L-12,46 L-17,56 L-23,77 L-26,81 L-25,74 L-18,51 Z " fill="#DEF3B6" transform="translate(342,48)"/>
+                    <path d="M0,0 L19,0 L17,12 L11,32 L10,35 L-4,44 L-13,50 L-16,49 L-14,46 L-13,39 L-9,29 L-8,22 L-5,14 L-2,5 L-3,3 L-6,1 Z M-17,50 Z " fill="#074887" transform="translate(92,203)"/>
+                    <path d="M0,0 L6,1 L15,8 L25,13 L26,16 L19,14 L15,12 L13,11 L14,14 L11,14 L10,29 L-7,29 L-7,11 L-4,9 L9,9 L4,5 L0,4 L-1,1 Z M7,5 Z M4,10 Z M58,2 L60,3 L58,4 Z M60,3 Z M61,4 Z M62,5 Z M63,6 Z M64,7 L66,9 L64,9 Z M69,8 L72,12 L71,15 L67,10 Z M66,9 Z M72,15 Z M26,16 L29,17 L26,17 Z M73,16 Z M74,17 Z M76,17 L78,17 L80,22 L80,25 L76,21 Z M29,18 L38,21 L36,22 L29,21 Z M75,18 Z M38,22 L44,25 L47,28 L83,29 L80,30 L80,32 L67,33 L79,34 L110,35 L110,36 L-37,37 L-46,39 L-43,35 L-28,34 L46,34 L51,33 L48,31 L45,30 L41,26 L38,25 Z M81,25 L84,27 L83,29 Z M110,36 L111,39 L109,40 Z " fill="#D0E6F4" transform="translate(173,50)"/>
+                    <path d="M0,0 L1,4 L-4,20 L-6,30 L-9,37 L-19,70 L-25,89 L-32,112 L-38,123 L-45,132 L-49,135 L-51,135 L-51,137 L-64,143 L-76,145 L-242,145 L-249,143 L-244,137 L-240,134 L-236,135 L-245,141 L-246,143 L-72,142 L-59,138 L-49,132 L-40,122 L-34,110 L-16,52 Z " fill="#E6F8C3" transform="translate(315,129)"/>
+                    <path d="M0,0 L25,0 L24,7 L17,31 L14,42 L12,43 L8,30 L4,17 L0,4 Z " fill="#0F599C" transform="translate(35,203)"/>
+                    <path d="M0,0 Z M-2,0 L2,2 L4,11 L6,17 L8,22 L8,25 L145,25 L146,22 L146,13 L149,11 L149,28 L6,28 L3,21 L-1,5 Z M5,19 Z M147,23 L148,25 Z " fill="#DDF0FA" transform="translate(50,130)"/>
+                    <path d="M0,0 L2,2 L4,6 L4,9 L171,9 L172,10 L173,24 L176,25 L171,26 L170,16 L167,13 L157,12 L15,12 L4,14 L0,13 L0,11 L1,10 L0,5 Z M178,22 Z M176,23 L178,24 Z " fill="#C4DBEA" transform="translate(28,183)"/>
+                    <path d="M0,0 L16,0 L17,1 L17,17 L0,17 Z " fill="#3D72A3" transform="translate(166,62)"/>
+                    <path d="M0,0 L37,0 L45,4 L49,9 L51,14 L51,21 L48,30 L43,35 L38,37 L28,38 L0,39 L-10,42 L-6,38 L1,36 L37,35 L44,31 L48,24 L48,14 L46,7 L44,7 L44,5 L38,3 L36,2 L0,1 Z M-12,42 L-10,42 L-12,46 L-17,56 L-23,77 L-26,81 L-25,74 L-18,51 Z " fill="#DFF3B7" transform="translate(342,48)"/>
+                    <path d="M0,0 L1,4 L-4,20 L-6,30 L-9,37 L-19,70 L-25,89 L-32,112 L-38,123 L-45,132 L-49,135 L-51,135 L-51,137 L-64,143 L-71,144 L-72,142 L-59,138 L-49,132 L-40,122 L-34,110 L-16,52 Z " fill="#DFF3B7" transform="translate(315,129)"/>
+                </svg>
+                
+                <div style="display: flex; flex-direction: column;">
+                    <span class="brand-texto">es</span>
+                    <span class="brand-texto">comercial</span>
+                </div>
+            </a>
+                
+            <div class="slogan-group">
+                <p class="slogan-texto">TIENDA FAMILIAR</p>
+                <p class="slogan-texto">DE CONFIANZA</p>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="contenido-principal">
+        <style>
+    /* Estilos inyectados directamente para garantizar que se apliquen */
+    h1.titulo-principal { text-align: center; margin-bottom: 25px; font-size: 28px; color: #1e293b; font-weight: 700; }
+    .layout-catalogo { display: flex; flex-direction: column; gap: 20px; }
+    .panel-filtros { background: #fff; padding: 0; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 10px; display: flex;flex-direction: column; }
+    .grupo-buscar { position: relative; margin: 0px 12px 12px 12px; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .grupo-buscar i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; grid-column: 1 / 5; }
+    .grupo-buscar input { width: 100%; padding: 7px 12px 7px 45px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box; grid-column: 1 / 5; }
+    .grupo-buscar input:focus { border-color: #3b82f6; }
+    
+    .tags-container { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 0px; scrollbar-width: none; -ms-overflow-style: none; background-color: #1B5F9B; }
+    .tags-container::-webkit-scrollbar { height: 5px; display: none; }
+    .tags-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    
+    .tag-categoria { background: #1B5F9B; color: #fff; padding: 8px 16px; 
+        font-size: 14px; font-weight: 600; cursor: pointer; 
+        transition: all 0.2s; border: 1px solid transparent; white-space: nowrap; width: auto;
+        box-sizing: border-box; display: inline-flex; align-items: center;
+    }
+    .tag-categoria:hover { background: #e2e8f0; color: #1B5F9B; }
+    .tag-categoria.active { background: #3b82f6; color: #fff; border-color: #2563eb; box-shadow: 0 2px 5px rgba(59, 130, 246, 0.4); }
+
+    /* SECCIÓN DE CONTENEDORES POR CATEGORÍA */
+    .seccion-categoria {
+        margin-bottom: 30px;
+        padding: 0 20px;
+    }
+    
+    .header-categoria {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .titulo-seccion-categoria {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 0;
+        text-transform: capitalize;
+    }
+
+    /* ESTILOS DE LOS BOTONES DEL SLIDER */
+    .controles-slider {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .btn-scroll {
+        background: #f1f5f9;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #475569;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .btn-scroll:hover {
+        background: #e2e8f0;
+        color: #1e293b;
+    }
+
+    /* Slider Horizontal Fluyente */
+    .grid-productos { 
+        display: flex; 
+        flex-wrap: nowrap; 
+        overflow-x: auto; 
+        gap: 16px; 
+        padding: 4px 4px 12px 4px;
+        scrollbar-width: none; 
+        -ms-overflow-style: none;  
+    }
+    
+    .grid-productos::-webkit-scrollbar {
+        display: none; 
+    }
+
+    /* Ancho fijo para las tarjetas en el slider horizontal */
+    .tarjeta-producto {
+        flex: 0 0 260px; 
+        background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        display: flex; flex-direction: column; cursor: pointer; transition: transform 0.2s; border: 1px solid #f1f5f9; text-decoration: none;
+    }
+    .tarjeta-producto:hover { transform: translateY(-4px); box-shadow: 0 5px 15px rgba(0,0,0,0.12); }
+    .contenedor-imagen { width: 100%; height: 220px; background: #f8fafc; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .contenedor-imagen img { width: 100%; height: 100%; object-fit: cover; }
+    .contenedor-imagen .placeholder-icon { color: #cbd5e1; }
+    .info-producto { padding: 12px; display: flex; flex-direction: column; flex-grow: 1; }
+    .categoria-badge { font-size: 12px; color: #3b82f6; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .titulo-producto { font-size: 15px; font-weight: 700; margin: 0 0 8px 0; color: #1e293b; line-height: 1.3; }
+    .descripcion-producto { font-size: 14px; color: #64748b; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5; }
+    .precio-producto { font-size: 15px; font-weight: 700; color: #1E852C; margin-top: auto; }
+    
+    @media (min-width: 649px) { 
+        .grupo-buscar i { grid-column: 2 / 4; }
+        .grupo-buscar input { grid-column: 2 / 4; }
+        .grid-productos { grid-template-columns: repeat(3, 1fr); gap: 8px; } 
+        .tarjeta-producto { flex: 0 0 180px; }
+    }
+    
+    @media (max-width: 649px) { 
+        .tarjeta-producto { flex: 0 0 146px; }
+        .grid-productos{ gap: 8px; }
+    }
+
+</style>
+
+<div class="layout-catalogo">
+    <aside class="panel-filtros">
+        <div class="grupo-buscar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="input-buscar" placeholder="¿Qué estás buscando?">
+        </div>
+
+        <div class="tags-container" id="contenedor-tags">
+            <div class="tag-categoria active" data-value="todos">Todos</div>
+            
+            
+                
+                <div class="tag-categoria" data-value="hogar">
+                    Hogar
+                </div>
+                
+            
+                
+                <div class="tag-categoria" data-value="electro">
+                    Electro
+                </div>
+                
+            
+        </div>
+    </aside>
+
+    <main id="contenedor-productos">
+        
+            
+            
+            
+            
+                
+                
+                <div class="seccion-categoria" data-seccion-categoria="hogar">
+                    <div class="header-categoria">
+                        <h2 class="titulo-seccion-categoria">Hogar</h2>
+                        <div class="controles-slider">
+                            <button class="btn-scroll btn-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button class="btn-scroll btn-next" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-productos">
+                        
+                            
+                                <a href="/productos/cubiertos-benabi-24.html" class="tarjeta-producto" 
+                                data-nombre="set de cubiertos benabi x 24 piezas" 
+                                data-categoria="hogar"
+                                style="text-decoration: none; color: inherit;">
+                                    
+                                    <div class="contenedor-imagen">
+                                        
+                                            <img src="/assets%5Cimg%5Ccubiertos-benabi-24.webp" alt="SET DE CUBIERTOS BENABI X 24 PIEZAS" loading="lazy">
+                                        
+                                    </div>
+
+                                    <div class="info-producto">
+                                        <h3 class="titulo-producto">SET DE CUBIERTOS BENABI X 24 PIEZAS</h3>
+                                        <p class="descripcion-producto">Renová tu mesa con este práctico y elegante set de cubiertos, ideal para el uso...</p>
+                                        <span class="precio-producto">$42749</span>
+                                    </div>
+                                </a>
+                            
+                        
+                    </div>
+                </div>
+            
+                
+                
+                <div class="seccion-categoria" data-seccion-categoria="electro">
+                    <div class="header-categoria">
+                        <h2 class="titulo-seccion-categoria">Electro</h2>
+                        <div class="controles-slider">
+                            <button class="btn-scroll btn-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button class="btn-scroll btn-next" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-productos">
+                        
+                            
+                                <a href="/productos/Estufa-Hal%C3%B3gena-STH125.html" class="tarjeta-producto" 
+                                data-nombre="estufa halógena fija star trak sth125" 
+                                data-categoria="electro"
+                                style="text-decoration: none; color: inherit;">
+                                    
+                                    <div class="contenedor-imagen">
+                                        
+                                            <img src="/assets%5Cimg%5Cestufa-halogena-STH125.webp" alt="Estufa Halógena Fija STAR TRAK STH125" loading="lazy">
+                                        
+                                    </div>
+
+                                    <div class="info-producto">
+                                        <h3 class="titulo-producto">Estufa Halógena Fija STAR TRAK STH125</h3>
+                                        <p class="descripcion-producto">🔥 ¡Llegó la solución para este invierno! 🔥 ❄️ Estufa Halógena Fija STAR TRAK STH125...</p>
+                                        <span class="precio-producto">$51000</span>
+                                    </div>
+                                </a>
+                            
+                        
+                            
+                                <a href="/productos/Yogurtera-NH-YG2700.html" class="tarjeta-producto" 
+                                data-nombre="yogurtera eléctrica novohome nh-yg2700" 
+                                data-categoria="electro"
+                                style="text-decoration: none; color: inherit;">
+                                    
+                                    <div class="contenedor-imagen">
+                                        
+                                            <img src="/assets%5Cimg%5CYogurtera-NH-YG2700.webp" alt="Yogurtera Eléctrica NovoHome NH-YG2700" loading="lazy">
+                                        
+                                    </div>
+
+                                    <div class="info-producto">
+                                        <h3 class="titulo-producto">Yogurtera Eléctrica NovoHome NH-YG2700</h3>
+                                        <p class="descripcion-producto">¡Prepará tus propios yogures caseros de manera fácil, práctica y saludable! 🥛🍓 ✅ Capacidad total...</p>
+                                        <span class="precio-producto">$52998</span>
+                                    </div>
+                                </a>
+                            
+                        
+                    </div>
+                </div>
+            
+            
+        
+    </main>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const inputBuscar = document.getElementById("input-buscar");
+        const tags = document.querySelectorAll(".tag-categoria");
+        const tarjetasProductos = document.querySelectorAll(".tarjeta-producto");
+        const seccionesCategorias = document.querySelectorAll(".seccion-categoria");
+        const todosLosSliders = document.querySelectorAll(".grid-productos");
+        let categoriaActiva = "todos";
+
+        function evaluarBotonesSlider(slider) {
+            const seccion = slider.closest('.seccion-categoria');
+            if (!seccion || seccion.style.display === "none") return;
+
+            const btnPrev = seccion.querySelector('.btn-prev');
+            const btnNext = seccion.querySelector('.btn-next');
+            if (!btnPrev || !btnNext) return;
+
+            if (slider.scrollLeft <= 0) {
+                btnPrev.style.visibility = 'hidden';
+            } else {
+                btnPrev.style.visibility = 'visible';
+            }
+
+            if (Math.ceil(slider.scrollLeft) >= (slider.scrollWidth - slider.clientWidth - 1)) {
+                btnNext.style.visibility = 'hidden';
+            } else {
+                btnNext.style.visibility = 'visible';
+            }
+        }
+
+        todosLosSliders.forEach(slider => {
+            evaluarBotonesSlider(slider);
+            slider.addEventListener('scroll', () => evaluarBotonesSlider(slider));
+        });
+
+        window.addEventListener('resize', () => {
+            todosLosSliders.forEach(slider => evaluarBotonesSlider(slider));
+        });
+
+        function aplicarFiltros() {
+            const textoBuscar = inputBuscar.value.toLowerCase().trim();
+
+            tarjetasProductos.forEach(producto => {
+                const nombreProducto = producto.getAttribute("data-nombre") || "";
+                const categoriaProducto = producto.getAttribute("data-categoria") || "";
+
+                const coincideTexto = nombreProducto.includes(textoBuscar);
+                const coincideCategoria = (categoriaActiva === "todos") || (categoriaProducto === categoriaActiva);
+
+                if (coincideTexto && coincideCategoria) {
+                    producto.style.display = "flex";
+                } else {
+                    producto.style.display = "none";
+                }
+            });
+
+            seccionesCategorias.forEach(seccion => {
+                const catSeccion = seccion.getAttribute("data-seccion-categoria");
+                
+                if (categoriaActiva !== "todos" && catSeccion !== categoriaActiva) {
+                    seccion.style.display = "none";
+                } else {
+                    const productosEnSeccion = seccion.querySelectorAll('.tarjeta-producto');
+                    let tieneVisibles = false;
+                    
+                    productosEnSeccion.forEach(prod => {
+                        if (prod.style.display !== "none") {
+                            tieneVisibles = true;
+                        }
+                    });
+
+                    if (tieneVisibles) {
+                        seccion.style.display = "block";
+                    } else {
+                        seccion.style.display = "none";
+                    }
+                }
+            });
+
+            setTimeout(() => {
+                todosLosSliders.forEach(slider => evaluarBotonesSlider(slider));
+            }, 50);
+        }
+
+        tags.forEach(tag => {
+            tag.addEventListener("click", function() {
+                tags.forEach(t => t.classList.remove("active"));
+                this.classList.add("active");
+                categoriaActiva = this.getAttribute("data-value");
+                aplicarFiltros();
+            });
+        });
+
+        inputBuscar.addEventListener("input", aplicarFiltros);
+
+        const btnPrevNodes = document.querySelectorAll('.btn-prev');
+        const btnNextNodes = document.querySelectorAll('.btn-next');
+        const anchoScroll = 300; 
+
+        btnPrevNodes.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const slider = this.closest('.seccion-categoria').querySelector('.grid-productos');
+                slider.scrollBy({ left: -anchoScroll, behavior: 'smooth' });
+            });
+        });
+
+        btnNextNodes.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const slider = this.closest('.seccion-categoria').querySelector('.grid-productos');
+                slider.scrollBy({ left: anchoScroll, behavior: 'smooth' });
+            });
+        });
+    });
+
+    // Al hacer clic en cualquier tarjeta de producto, guardamos la posición
+    document.querySelectorAll('.tarjeta-producto').forEach(link => {
+        link.addEventListener('click', () => {
+            sessionStorage.setItem('scrollPos', window.scrollY);
+        });
+    });
+    
+    // Al volver al index, si existe una posición guardada, restaurarla
+    window.addEventListener('pageshow', () => {
+        const scrollPos = sessionStorage.getItem('scrollPos');
+        if (scrollPos) {
+            window.scrollTo(0, parseInt(scrollPos));
+            // Borramos la posición para que no vuelva a saltar si el usuario recarga la página
+            sessionStorage.removeItem('scrollPos');
+        }
+    });
+
+</script>
+    </main>
+
+    
+    
+
+</body>
+</html>
