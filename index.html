@@ -34,6 +34,8 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
             z-index: 1000;
             padding: 12px 12px;
+            min-height: 62px;
+            max-height: 62px;
         }
 
         /* Cambiado a flex con centrado perfecto */
@@ -44,6 +46,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 56px;
+            max-height: 56px;
         }
 
         /* Ahora contiene todos los elementos alineados horizontalmente */
@@ -202,7 +206,7 @@
     /* Estilos inyectados directamente para garantizar que se apliquen */
     h1.titulo-principal { text-align: center; margin-bottom: 25px; font-size: 28px; color: #1e293b; font-weight: 700; }
     .layout-catalogo { display: flex; flex-direction: column; gap: 20px; }
-    .panel-filtros { background: #fff; padding: 0; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 10px; display: flex;flex-direction: column; }
+    .panel-filtros { background: #fff; padding: 0; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 10px; display: flex;flex-direction: column;position: sticky; top: 62px; z-index: 100; padding-top: 12px; }
     .grupo-buscar { position: relative; margin: 0px 12px 12px 12px; display: grid; grid-template-columns: repeat(4, 1fr); }
     .grupo-buscar i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; grid-column: 1 / 5; }
     .grupo-buscar input { width: 100%; padding: 7px 12px 7px 45px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box; grid-column: 1 / 5; }
